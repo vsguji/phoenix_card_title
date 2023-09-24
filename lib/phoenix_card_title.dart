@@ -1,7 +1,12 @@
 library phoenix_card_title;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+/// config
+export 'config/card_title_config.dart';
+
+/// extension
+export 'extension/cardTitle_default_config_utils.dart';
+export 'extension/cardTitle_total_config.dart';
+
+///
+export 'action_card_title.dart';
+export 'common_card_title.dart';
