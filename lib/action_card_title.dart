@@ -3,6 +3,7 @@ import 'package:phoenix_base/phoenix.dart';
 import 'package:phoenix_card_title/extension/cardTitle_total_config.dart';
 
 import 'config/card_title_config.dart';
+import 'extension/card_title_assets.dart';
 
 /// 右侧为箭头的卡片标题组件
 ///
@@ -140,7 +141,8 @@ class ActionCardTitle extends StatelessWidget {
   }
 
   Widget _arrowWidget() {
-    return PhoenixTools.getAssetSizeImage(BaseAsset.iconRightArrow, 16, 16);
+    return PhoenixTools.getAssetSizeImage(
+        CardTitleAsset.iconRightArrow, 16, 16);
   }
 
   Widget _accessoryTextWidget(CardTitleConfig defaultConfig) {
