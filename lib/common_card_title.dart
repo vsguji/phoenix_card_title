@@ -25,17 +25,17 @@ import 'config/card_title_config.dart';
 /// 整个组件是可以响应点击事件的[onTap]
 ///
 /// 标题为文本、跟随标题为标签、最右侧为自定义Widget
-/// BrnCommonCardTitle(
+/// CommonCardTitle(
 ///    title: '非箭头非箭头',
-///    accessoryWidget: BrnStateTag(tagText: '状态标签'),
-///    subTitleWidget: BrnStartRatingIndicator(rating: 4),
+///    accessoryWidget: StateTag(tagText: '状态标签'),
+///    subTitleWidget: StartRatingIndicator(rating: 4),
 ///    onTap: () {
-///        BrnToast.show('BrnCommonCardTitle is clicked', context);
+///        Toast.show('CommonCardTitle is clicked', context);
 ///    },
 /// )
 ///
 /// 标题为文本、最右侧为自定义Widget、标题下方为长文本
-/// BrnCommonCardTitle(
+/// CommonCardTitle(
 ///    title: '非箭头Title',
 ///    detailTextString: '房产证地址与楼盘字房产证地址与楼盘字房产证地址与楼盘字房产证地址与楼盘字房产证地址与楼盘字',
 ///    subTitleWidget: BrnStartRatingIndicator(rating: 4),
@@ -44,7 +44,7 @@ import 'config/card_title_config.dart';
 ///    },
 /// )
 /// 相关按钮如下:
-///  * [BrnActionCardTitle], 右侧为箭头的卡片标题组件
+///  * [ActionCardTitle], 右侧为箭头的卡片标题组件
 ///
 class CommonCardTitle extends StatelessWidget {
   /// 标题
@@ -133,14 +133,14 @@ class CommonCardTitle extends StatelessWidget {
 
     Widget accessory = const SizedBox.shrink();
     // 左侧的文本的行高是25，那么右侧的widget最大为25
-    if (this.accessoryWidget != null) {
+    if (accessoryWidget != null) {
       accessory = Container(
         height: 25,
         alignment: Alignment.center,
-        padding: EdgeInsets.only(left: 4),
+        padding: const EdgeInsets.only(left: 4),
         child: accessoryWidget,
       );
-    } else if (this.accessoryText?.isNotEmpty ?? false) {
+    } else if (accessoryText?.isNotEmpty ?? false) {
       accessory = _accessoryTextWidget(defaultConfig);
     }
     children.add(accessory);
@@ -163,18 +163,18 @@ class CommonCardTitle extends StatelessWidget {
     );
 
     return Container(
-      child: tx,
       height: 25,
-      padding: EdgeInsets.only(left: 4),
+      padding: const EdgeInsets.only(left: 4),
       alignment: Alignment.center,
+      child: tx,
     );
   }
 
   ///标题右侧的widget
   Widget _subTitleWidgetFromWidget() {
     return Padding(
+      padding: const EdgeInsets.only(left: 4),
       child: subTitleWidget,
-      padding: EdgeInsets.only(left: 4),
     );
   }
 
@@ -187,8 +187,8 @@ class CommonCardTitle extends StatelessWidget {
     }
     var titleWidget = RichText(
       textScaleFactor: MediaQuery.of(context).textScaleFactor,
-      maxLines: this.titleMaxLines,
-      overflow: this.titleOverflow,
+      maxLines: titleMaxLines,
+      overflow: titleOverflow,
       text: TextSpan(
           text: title,
           style: defaultConfig.titleWithHeightTextStyle.generateTextStyle(),
@@ -222,8 +222,8 @@ class CommonCardTitle extends StatelessWidget {
       style: defaultConfig.detailTextStyle.generateTextStyle(),
     );
     return Container(
+      padding: const EdgeInsets.only(top: 4),
       child: tx,
-      padding: EdgeInsets.only(top: 4),
     );
   }
 }

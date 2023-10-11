@@ -23,15 +23,15 @@ import 'extension/card_title_assets.dart';
 /// 整个组件是可以响应点击事件的[onTap],如果onTap是null，那么只是普通的展示组件，不会影响用户的其他点击事件
 ///
 /// 标题为文本
-/// BrnActionCardTitle(
+/// ActionCardTitle(
 ///    title: '箭头标题',
 ///    onTap: () {
-///        BrnToast.show('BrnActionCardTitle is clicked', context);
+///        Toast.show('BrnActionCardTitle is clicked', context);
 ///    },
 /// )
 ///
 /// 相关按钮如下:
-///  * [BrnCommonCardTitle], 普通卡片标题组件
+///  * [CommonCardTitle], 普通卡片标题组件
 ///
 class ActionCardTitle extends StatelessWidget {
   ///标题显示文案：必填参数
@@ -53,7 +53,7 @@ class ActionCardTitle extends StatelessWidget {
   final CardTitleConfig? themeData;
 
   /// create BrnActionCardTitle
-  ActionCardTitle({
+  const ActionCardTitle({
     Key? key,
     required this.title,
     this.accessoryText,
@@ -75,8 +75,8 @@ class ActionCardTitle extends StatelessWidget {
       return _rowWidget(context, defaultConfig);
     }
     return GestureDetector(
-      child: _rowWidget(context, defaultConfig),
       onTap: onTap,
+      child: _rowWidget(context, defaultConfig),
     );
   }
 
@@ -104,16 +104,16 @@ class ActionCardTitle extends StatelessWidget {
     );
     return Container(
       color: defaultConfig.cardBackgroundColor,
-      child: row,
       padding: defaultConfig.cardTitlePadding,
+      child: row,
     );
   }
 
   Widget _titleWidget(CardTitleConfig defaultConfig) {
     return Container(
-      padding: EdgeInsets.only(right: 8),
+      padding: const EdgeInsets.only(right: 8),
       child: Text(
-        this.title,
+        title,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: defaultConfig.titleTextStyle.generateTextStyle(),
@@ -129,8 +129,8 @@ class ActionCardTitle extends StatelessWidget {
 
     if (subTitle != null) {
       return Container(
-        constraints: BoxConstraints(maxWidth: 84),
-        child: Text(this.subTitle!,
+        constraints: const BoxConstraints(maxWidth: 84),
+        child: Text(subTitle!,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: _subTextStyle(defaultConfig)),
@@ -141,8 +141,8 @@ class ActionCardTitle extends StatelessWidget {
   }
 
   Widget _arrowWidget() {
-    return PhoenixTools.getAssetSizeImage(
-        CardTitleAsset.iconRightArrow, 16, 16);
+    return PhoenixTools.getAssetSizeImage(CardTitleAsset.iconRightArrow, 16, 16,
+        package: 'phoenix_card_title');
   }
 
   Widget _accessoryTextWidget(CardTitleConfig defaultConfig) {
@@ -154,7 +154,7 @@ class ActionCardTitle extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
-            constraints: BoxConstraints(maxWidth: 84),
+            constraints: const BoxConstraints(maxWidth: 84),
             child: Text(
               accessoryText ?? "",
               overflow: TextOverflow.ellipsis,
